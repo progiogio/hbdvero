@@ -1,0 +1,280 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+      <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+  
+  
+    <title>Love Letter</title>
+  
+      <link rel="canonical" href="https://codepen.io/jvhti/pen/rLMWeP">
+    <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet" type="text/css">
+    
+    
+    
+  <style>
+  h1,
+  p {
+      font-family: 'Hind', sans-serif;
+  }
+  
+  p{
+      text-indent: 50px;
+  }
+  
+  h1 {
+      font-weight: 200;
+  }
+  
+  body {
+      margin: 0px;
+  }
+  
+  .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+  }
+  
+  .heart {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      transiton: transform 2s;
+      z-index: 1;
+  }
+  
+  .heart > img {
+      width: 50px;
+      height: auto;
+  }
+  
+  .message {
+      padding: 20px;
+      background-color: #eee;
+      min-width: 400px;
+      height: 75%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      overflow: hidden;
+      animation-name: openmsg;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-play-state: paused;
+      animation-fill-mode: forwards;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+      border-radius: 5px;
+  }
+  
+  .heart > img:hover {
+      animation-name: beat;
+      animation-duration: 2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-play-state: running;
+  }
+  
+  #messageState {}
+  
+  @keyframes beat {
+      0% {
+          width: 50px;
+      }
+      25% {
+          width: 58px;
+      }
+      30% {
+          width: 50px;
+      }
+      50% {
+          width: 45px;
+      }
+      60% {
+          width: 50px;
+      }
+      75% {
+          width: 58px;
+      }
+      100% {
+          width: 50px;
+      }
+  }
+  
+  @keyframes openmsg {
+      0% {
+          height: 0px;
+          padding: 0px 20px;
+      }
+      100% {
+          height: 75%;
+          padding: 20px 20px;
+      }
+  }
+  
+  @keyframes heartMove {
+      0% {
+          top: 50%
+      }
+      100% {
+          top: 85%;
+          transform: translate(-50%, 0);
+      }
+  }
+  
+  .openNor {
+      animation-direction: normal;
+      animation-play-state: running;
+  }
+  
+  .closeNor {
+      animation-direction: reverse;
+      animation-play-state: running;
+  }
+  
+  .no-anim {
+      animation: none;
+  }
+  
+  .closed {
+      height: 0px;
+      padding: 0px 20px;
+  }
+  
+  .bottom {
+      bottom: 5px;
+  }
+  
+  .openHer {
+      animation-name: heartMove;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-play-state: running;
+      animation-fill-mode: forwards;
+  }
+  
+  .closeHer {
+      animation-name: heartMove;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-play-state: running;
+      animation-direction: reverse;
+      animation-fill-mode: forwards;
+  }
+  
+  .beating > img {
+      animation-name: beat;
+      animation-duration: 2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-play-state: running;
+  }
+  
+  .openedHer {
+      top: 85%;
+      transform: translate(-50%, 0);
+  }
+  </style>
+  
+    <script>
+    window.console = window.console || function(t) {};
+  </script>
+  
+    
+    
+  <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;family=Poppins:ital,wght@0,400;0,500;0,600;0,800;1,400;1,500;1,600;1,800&amp;display=swap"></head>
+  
+  <body translate="no">
+      <audio id="myAudio" controls="" loop="" hidden="">
+          <source src="Song/letter.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+      </audio>
+    <div class="container" style="background-color: rgb(252, 228, 236);">
+      <label>
+      <div class="heart no-anim">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg">
+      </div>
+      <input id="messageState" type="checkbox" style="display:none">
+      </label>
+      <div class="message closed no-anim">
+          <h1>My Dearest Love. (hehe) i mean my friend vero,</h1>
+          <p>Since the day you came into my life, everything has changed for the better. The world that once seemed so plain is now filled with color, all because of you. You've brought light into my life, chasing away the darkness, and I feel so blessed to have you.</p>
+  
+          <p>On your special day, I want you to know just how much you mean to me. You are my source of happiness, my inspiration, and the reason I feel grounded in this world. With you, everything seems brighter.</p>
+
+          <p>I'm sorry if i mean to you and didn't good for you and i always be cruel to you and leave you, also i hope you you are fine there, with your family, partner, friends and everyone there</p>
+              
+          <p>Happy birthday, vero! I hope this day brings you as much joy as you bring into my life every single day. I wish you all the happiness, success, and love you deserve, not only today but throughout the entire year.</p> 
+              
+          <h4>from your long distance friend, <br>[Dell]</h4>
+      </div>
+  </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.min.js"></script>
+        <script id="rendered-js">
+  $("#messageState").on("change", x => {
+    $(".message").removeClass("openNor").removeClass("closeNor");
+    if ($("#messageState").is(":checked")) {
+      $(".message").removeClass("closed").removeClass("no-anim").addClass("openNor");
+      $(".heart").removeClass("closeHer").removeClass("openedHer").addClass("openHer");
+      $(".container").stop().animate({ "backgroundColor": "#f48fb1" }, 2000);
+      console.log("Abrindo");
+    } else {
+      $(".message").removeClass("no-anim").addClass("closeNor");
+      $(".heart").removeClass("openHer").removeClass("openedHer").addClass("closeHer");
+      $(".container").stop().animate({ "backgroundColor": "#fce4ec" }, 2000);
+      console.log("fechando");
+    }
+  });
+  
+  $(".message").on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function (e) {
+    console.log("Animation End");
+    if ($(".message").hasClass("closeNor"))
+    $(".message").addClass("closed");
+    $(".message").removeClass("openNor").removeClass("closeNor").addClass("no-anim");
+  });
+  
+  $(".heart").on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function (e) {
+    console.log("Animation End");
+    if (!$(".heart").hasClass("closeHer"))
+    $(".heart").addClass("openedHer").addClass("beating");else
+  
+    $(".heart").addClass("no-anim").removeClass("beating");
+    $(".heart").removeClass("openHer").removeClass("closeHer");
+  });
+  //# sourceURL=pen.js
+  window.addEventListener('click', function() {
+          var audio = document.getElementById('myAudio');
+          audio.play().catch(function(error) {
+              console.log('Autoplay was prevented:', error);
+          });
+      }, { once: true });    window.addEventListener('click', function() {
+          var audio = document.getElementById('myAudio');
+          audio.play().catch(function(error) {
+              console.log('Autoplay was prevented:', error);
+          });
+      }, { once: true });
+      </script>
+  
+    
+  
+  
+  
+  <audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
+                      <div class="sound">
+                          <div class="sound-icon"></div>
+                          <div class="sound-wave sound-wave_one"></div>
+                          <div class="sound-wave sound-wave_two"></div>
+                          <div class="sound-wave sound-wave_three"></div>
+                      </div>
+                      <div class="segments-box">
+                          <div data-range="1-20" class="segment"><span></span></div>
+                          <div data-range="21-40" class="segment"><span></span></div>
+                          <div data-range="41-60" class="segment"><span></span></div>
+                          <div data-range="61-80" class="segment"><span></span></div>
+                          <div data-range="81-100" class="segment"><span></span></div>
+                      </div>
+                  </div><span id="PING_CONTENT_DLS_POPUP" style="display: none;"></span><div style="background-color: transparent; border: none; bottom: 15px; display: block; margin: 0px; opacity: 1; padding: 0px; position: fixed; right: 15px; z-index: 2147483647;"></div></body></html>
